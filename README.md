@@ -7,6 +7,13 @@ Implementing the Bresenham algorithm to draw a line and circle for the desired p
 * Add 2 Frameworks for this to build & run
 * OpenGL & GLUT Framework
 
+Before doing these exercise learn how Bresenham algorith works! 
+https://youtu.be/vlZFSzCIwoc
+
 #### Exercise 1
-* Implement a Bresenham algorithm
-* The result should draw a Trinagle in a window
+* Implement a Bresenham algorithm to draw a line
+* The result should draw pixelated (staircase) 3 lines with different colors
+
+#### Exercise 2
+* Implement a Bresengam algorith to draw a circle
+* The result should draw a pixelated circle. 
