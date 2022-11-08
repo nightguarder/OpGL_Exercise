@@ -18,5 +18,5 @@ https://youtu.be/vlZFSzCIwoc
 #### Exercise 2
 * Implement a Bresengam algorith to draw a circle
 * The result should draw a pixelated circle. 
-*I should fix the bug where theres pixel missing for each section not being drawn?*
+* *I should fix the bug where theres pixel missing for each section not being drawn?*
 ![Exercise 2 image](result_circle.png)
