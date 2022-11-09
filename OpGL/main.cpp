@@ -1,9 +1,6 @@
-//
 //  main.cpp
 //  OpGL
-//
 //  Created by Cyril Steger on 30.10.2022.
-//
 
 #include <iostream>
 using namespace std;
@@ -30,13 +27,10 @@ char g_Buffer[3*TEX_RES];
 // Textur ID Name
 GLuint g_TexID = 0;
 
-// Aufl�sung des Hauptfensters (kann sich durch User �ndern)
-int g_WinWidth = 800;
-int g_WinHeight = 800;
+// Change the window size
+int g_WinWidth = 1000;
+int g_WinHeight = 1000;
 
-// Funktion organisiert die Textur.
-// K�mmern Sie sich nicht weiter um diese Funktion, da
-// sie momentan nur ein notwendiges �bel darstellt!
 void manageTexture ()
 {
     glEnable        (GL_TEXTURE_2D);
@@ -52,9 +46,6 @@ void manageTexture ()
     glDisable       (GL_TEXTURE_2D);
 }
 
-// Callback Funktion um die Fenstergr��en anzupassen.
-// Auch diese Funktion ist ein notwendiges �bel! K�mmern
-// Sie sich im Moment nicht weiter darum.
 void reshape(int w, int h)
 {
 
@@ -68,9 +59,6 @@ void reshape(int w, int h)
 
     glutPostRedisplay ();
 }
-// Funktion l�scht den Bildschirm mit der angegebenen Farbe
-// Usage z.B.: clearImage (Color (1,1,1))
-// l�scht den Bildschirm in Wei�.
 // Ohne Farbangabe ist der Standard Wei�
 void clearImage (Color c=Color()) {
     for (int i=0; i<TEX_RES; i++) {
@@ -79,12 +67,10 @@ void clearImage (Color c=Color()) {
         g_Buffer[3*i+2] = 255.0*c.b;
     }
 }
-
 // Funktion malt einen Punkt an die angegebenen Koordinaten
 // Usage z.B.: setPoint (Point(10, 5), Color (1,0,0))
 // malt einen Punkt an die Koordinate (10, 5)
 // Ohne Farbangabe ist die Standard-Malfarbe Schwarz
-//
 // Nutzen Sie diese Funktion ...
 void setPoint (Point p, Color c=Color(0,0,0)) {
     int x = p.x + TEX_HALF_X;
@@ -98,9 +84,6 @@ void setPoint (Point p, Color c=Color(0,0,0)) {
     g_Buffer[3*TO_LINEAR (x, y)+1] = 255.0*c.g;
     g_Buffer[3*TO_LINEAR (x, y)+2] = 255.0*c.b;
 }
-//
-// �BUNG 1 AUFGABE 1:
-//
 // Diese Funktion soll eine Gerade zwischen den Punkten
 // p1 und p2 in der Farbe c malen. Benutzen Sie die Funktion
 // setPoint um die individuellen Punkte zu zeichnen.
@@ -247,13 +230,14 @@ void display (void)
     Point p6 (0,-15);
     bhamLine(p5, p6, cGreen);
     
+    //clearImage(background);
     //Bresenham Circle Draw
     //1. Create a middle point
-    //Point p(-3, -5);                        // Mittelpunkt f�r Kreis definieren
+    //Point p(-3, -5);                      
     //2. Define Radius of the circle
-    int r = 17;                                // Radius festlegen
+    int r = 17;
     //3. Draw a circle
-    //bhamCircle (p, r, cGreen);            // Kreis zeichnen ...
+    //bhamCircle (p, r, cGreen);
 
     manageTexture ();
 
@@ -283,15 +267,16 @@ void display (void)
 int main (int argc, char **argv) {
 
     glutInit (&argc, argv);
+    //set window size
     glutInitWindowSize (g_WinWidth, g_WinHeight);
     glutCreateWindow ("OpenGL - Exercise1"); //name this anything you want
 
-    glutReshapeFunc (reshape);    // zust�ndig f�r Gr��en�nderungen des Fensters
-    glutDisplayFunc (display);    // zust�ndig f�r das wiederholte Neuzeichnen des Bildschirms
-
+    glutReshapeFunc (reshape);
+    glutDisplayFunc (display);
+    
     glutMainLoop ();
 
-    glDeleteTextures (1, &g_TexID); // l�scht die oben angelegte Textur
+    glDeleteTextures (1, &g_TexID);
 
     return 0;
 }
