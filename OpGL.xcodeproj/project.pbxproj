@@ -12,10 +12,23 @@
 		D502B98A290EFEC500FF8463 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D502B989290EFEC500FF8463 /* OpenGL.framework */; };
 		D502B993290F20B700FF8463 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D502B991290F20B700FF8463 /* point.cpp */; };
 		D502B996290F220B00FF8463 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D502B994290F220B00FF8463 /* color.cpp */; };
+		D53561D82924FFAA008F4DEF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D53561D72924FFAA008F4DEF /* main.cpp */; };
+		D53561DC2925000C008F4DEF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D502B989290EFEC500FF8463 /* OpenGL.framework */; };
+		D53561DD29250013008F4DEF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D502B987290EFEBF00FF8463 /* GLUT.framework */; };
+		D53561DE292500BB008F4DEF /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D53561CE2924FDB8008F4DEF /* vector.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D502B97A290EFE4000FF8463 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		D53561D32924FFAA008F4DEF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -35,6 +48,10 @@
 		D502B992290F20B700FF8463 /* point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = point.hpp; sourceTree = "<group>"; };
 		D502B994290F220B00FF8463 /* color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = color.cpp; sourceTree = "<group>"; };
 		D502B995290F220B00FF8463 /* color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = color.hpp; sourceTree = "<group>"; };
+		D53561CE2924FDB8008F4DEF /* vector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vector.cpp; sourceTree = "<group>"; };
+		D53561CF2924FDB8008F4DEF /* vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector.hpp; sourceTree = "<group>"; };
+		D53561D52924FFAA008F4DEF /* Solar */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Solar; sourceTree = BUILT_PRODUCTS_DIR; };
+		D53561D72924FFAA008F4DEF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +64,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D53561D22924FFAA008F4DEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D53561DD29250013008F4DEF /* GLUT.framework in Frameworks */,
+				D53561DC2925000C008F4DEF /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -54,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				D502B97E290EFE4000FF8463 /* OpGL */,
+				D53561D62924FFAA008F4DEF /* Solar */,
 				D502B97D290EFE4000FF8463 /* Products */,
 				D502B986290EFEBF00FF8463 /* Frameworks */,
 			);
@@ -63,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				D502B97C290EFE4000FF8463 /* OpGL */,
+				D53561D52924FFAA008F4DEF /* Solar */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,6 +116,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D53561D62924FFAA008F4DEF /* Solar */ = {
+			isa = PBXGroup;
+			children = (
+				D53561CE2924FDB8008F4DEF /* vector.cpp */,
+				D53561CF2924FDB8008F4DEF /* vector.hpp */,
+				D53561D72924FFAA008F4DEF /* main.cpp */,
+			);
+			path = Solar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -108,6 +146,23 @@
 			productReference = D502B97C290EFE4000FF8463 /* OpGL */;
 			productType = "com.apple.product-type.tool";
 		};
+		D53561D42924FFAA008F4DEF /* Solar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D53561D92924FFAA008F4DEF /* Build configuration list for PBXNativeTarget "Solar" */;
+			buildPhases = (
+				D53561D12924FFAA008F4DEF /* Sources */,
+				D53561D22924FFAA008F4DEF /* Frameworks */,
+				D53561D32924FFAA008F4DEF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Solar;
+			productName = Solar;
+			productReference = D53561D52924FFAA008F4DEF /* Solar */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -119,6 +174,9 @@
 				TargetAttributes = {
 					D502B97B290EFE4000FF8463 = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					D53561D42924FFAA008F4DEF = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -136,6 +194,7 @@
 			projectRoot = "";
 			targets = (
 				D502B97B290EFE4000FF8463 /* OpGL */,
+				D53561D42924FFAA008F4DEF /* Solar */,
 			);
 		};
 /* End PBXProject section */
@@ -148,6 +207,15 @@
 				D502B996290F220B00FF8463 /* color.cpp in Sources */,
 				D502B993290F20B700FF8463 /* point.cpp in Sources */,
 				D502B980290EFE4000FF8463 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D53561D12924FFAA008F4DEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D53561DE292500BB008F4DEF /* vector.cpp in Sources */,
+				D53561D82924FFAA008F4DEF /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +353,24 @@
 			};
 			name = Release;
 		};
+		D53561DA2924FFAA008F4DEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D53561DB2924FFAA008F4DEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -302,6 +388,15 @@
 			buildConfigurations = (
 				D502B984290EFE4000FF8463 /* Debug */,
 				D502B985290EFE4000FF8463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D53561D92924FFAA008F4DEF /* Build configuration list for PBXNativeTarget "Solar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D53561DA2924FFAA008F4DEF /* Debug */,
+				D53561DB2924FFAA008F4DEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
