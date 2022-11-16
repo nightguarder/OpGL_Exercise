@@ -1,5 +1,5 @@
 # OpGL_Exercise
-Open GL exercises from a school project - Computer Graphics
+Open GL exercises from a school project - Computer Graphics.
 Implementing various project using OpenGL in C++
 
 ### Setup
