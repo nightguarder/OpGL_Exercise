@@ -1,4 +1,4 @@
-# OpGL_Exercise1
+# OpGL_Exercise
 Open GL exercise from a school project - Computer Graphics
 Implementing the Bresenham algorithm to draw a line and circle for the desired points.
 ### Setup
