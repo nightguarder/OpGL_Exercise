@@ -2,6 +2,7 @@
 Open GL exercises from a school project - Computer Graphics.
 Implementing various project using OpenGL in C++
 
+>>>>>>> Stashed changes
 ### Setup
 * OpenGL is deprecated on newer MacOS so it might not work on yours.
 * Xcode ––> Project Settings ––> Targets 
