@@ -183,6 +183,8 @@ void bhamCircle (Point p, int r, Color c) {
     dSE = 5 - 2 * r;
     //while radius(each step) is not bigger than x
     //while x gets incremented after each step
+    //TODO: Draw pixel for each part
+    
     while (y > x) {
         if(d<0){
             x++;
@@ -233,11 +235,11 @@ void display (void)
     //clearImage(background);
     //Bresenham Circle Draw
     //1. Create a middle point
-    //Point p(-3, -5);                      
+    Point p(-3, -5);
     //2. Define Radius of the circle
     int r = 17;
     //3. Draw a circle
-    //bhamCircle (p, r, cGreen);
+    bhamCircle (p, r, cGreen);
 
     manageTexture ();
 

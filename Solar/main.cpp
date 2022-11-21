@@ -63,6 +63,10 @@ void set8Pixel(GLint x, GLint y, GLint cx, GLint cy, GLint part){
     switch (part) {
         case 0:
             glBegin(GL_POINTS);
+            //glColor3f (1,0,0);
+            //glVertex2i (g_iPos -x + cx, -y + cy);
+            //glVertex2i (-g_iPos -y + cx, g_iPos -x + cy);
+            
             glVertex2i(-x + cx, -y + cy); // -1, -2
             glVertex2i(-y + cx, -x + cy); // -2, -1
             glEnd();
@@ -100,7 +104,7 @@ void drawPlanet(GLint radius,Color rgb,GLint cx,GLint cy, GLint part){
     dE = 3;
     dSE = 5 - 2 * radius;
     //x = 0, y = radius, cx = x-axis cy = position y-axis, part = quarter of the circle 0,1,2,3
-    //Draw the first part 0
+    //Draw pixels for each part first
     set8Pixel(x, y, cx, cy, part);
     //continue
     //while painting top eighth part of circle
@@ -159,7 +163,6 @@ void display1 (void)
     radius = 75;
     for (int i = 0; i<=3; i++)
         drawPlanet(radius,earth, posX, posY,i);
-    
     //Draw moon at position +450 on x-axis
     posX = 450;
     radius = 50;
@@ -202,9 +205,6 @@ void timer (int value)
     // variables for display2 ...
     if (g_vecPos(1)<=-size2 || g_vecPos(1)>=size2) g_vecPosIncr = -g_vecPosIncr;
     g_vecPos += g_vecPosIncr;
-
-    //
-    ///////
 
     // the last two lines should always be
     glutPostRedisplay ();
