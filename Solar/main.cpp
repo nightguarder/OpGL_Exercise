@@ -4,11 +4,13 @@
 
 //Libraries
 #include <iostream>
+#include <math.h>
 using namespace std;
 #define GL_SILENCE_DEPRECATION //to silence these warings
 #include <GLUT/glut.h>
 //Classes
 #include "vector.cpp"
+#include "color.cpp"
 // window width and height (choose an appropriate size)
 int g_iWidth  = 1000;
 int g_iHeight = 1000;
@@ -17,6 +19,10 @@ int g_iHeight = 1000;
 int g_iTimerMSecs;
 float g_iPos;        // ... position and ...
 float g_iPosIncr;    // ... position increment (used in display1)
+//rotation matrix
+GLfloat rotX = 0.0f; //rotate x
+GLfloat rotY = 0.0f; //rotate y
+GLfloat rotZ = 0.0f; //rotate z
 
 CVec2i g_vecPos;        // same as above but in vector form ...
 CVec2i g_vecPosIncr;    // (used in display2)
@@ -53,57 +59,125 @@ void initGL ()
     // tell which color to use to clear image
     glClearColor (0,0,0,1);
 }
+void set8Pixel(GLint x, GLint y, GLint cx, GLint cy, GLint part){
+    switch (part) {
+        case 0:
+            glBegin(GL_POINTS);
+            glVertex2i(-x + cx, -y + cy); // -1, -2
+            glVertex2i(-y + cx, -x + cy); // -2, -1
+            glEnd();
+        break;
+        case 1:
+            glBegin(GL_POINTS);
+            glVertex2i(x + cx, -y + cy); //  1, -2
+            glVertex2i(y + cx, -x + cy); //  2, -1
+            glEnd();
+        break;
+        case 2:
+            glBegin(GL_POINTS);
+            glVertex2i(x + cx, y + cy); //  1,  2
+            glVertex2i(y + cx, x + cy); //  2,  1
+            glEnd();
+        break;
+        case 3:
+            glBegin(GL_POINTS);
+            glVertex2i(-x + cx, y + cy); // -1,  2
+            glVertex2i(-y + cx, x + cy); // -2,  1
+            glEnd();
+        break;
+        default:
+            break;
+    }
+}
+//Draw a circle with radius,color and coordinates on the x-axis and y-axis and which part of the circle to draw
+void drawPlanet(GLint radius,Color rgb,GLint cx,GLint cy, GLint part){
+    GLint x, y, d, dE, dSE;
+    //Choose a color for points
+    glColor3f(rgb.r, rgb.g, rgb.b);
+    x = 0;
+    y = radius;
+    d = 1 - radius;
+    dE = 3;
+    dSE = 5 - 2 * radius;
+    //x = 0, y = radius, cx = x-axis cy = position y-axis, part = quarter of the circle 0,1,2,3
+    //Draw the first part 0
+    set8Pixel(x, y, cx, cy, part);
+    //continue
+    //while painting top eighth part of circle
+        while (y > x)
+        {
+            //move on x-axis
+            if (d < 0)
+            {
+                x++;
+                dE += 2;
+                dSE += 2;
+                d += dE;
+            }
+            //move on y-axis
+            else
+            {
+                x++;
+                y--;
+                dE += 2;
+                dSE += 4;
+                d += dSE;
+            }
+            set8Pixel(x, y, cx, cy, part);
+        }
+}
+void rotatePlanet(float radius,Color rgb,float posX,float posY){
+    glPushMatrix();
+    
+    for (int i = 0; i<=3; i++)
+        drawPlanet(radius,rgb, posX, posY,i);
+    glPopMatrix();
+}
 // display callback function
+//Use bresenham
 void display1 (void)
 {
-
+    //Variables for the planets
+    float radius = 100; //increases the size
+    float posX = 0; float posY = 0; //position on the x-axis and y-axis where the planet is drawn
+    //Angles for the planets
+    float earthAngle = 0;
+    float moonAngle = 0;
+    //Colors for the planets
+    //Yellow color, pass values in correct order!
+    glClearColor(0, 0, 0, 1);
     glClear (GL_COLOR_BUFFER_BIT);
+    Color sun(1,1,0);
+    Color earth(0,0,1);
+    Color moon(0.5,0.5,0.5);
+    //Draw sun at center position
+    for (int i = 0; i<=3; i++)
+        drawPlanet(radius,sun, posX, posY,i);
 
-    ///////
-    // display your data here ...
-    //
-
-    glBegin (GL_TRIANGLES);
-        glColor3f (1,0,0);
-        glVertex2i (g_iPos, 0);
-        glColor3f (0,1,0);
-        glVertex2i (-g_iPos, g_iPos);
-        glColor3f (0,0,1);
-        glVertex2i (-g_iPos, -g_iPos);
-    glEnd ();
-
-    //
-    ///////
-
+    //Draw earth at position +300 on x-axis
+    posX = 300;
+    radius = 75;
+    for (int i = 0; i<=3; i++)
+        drawPlanet(radius,earth, posX, posY,i);
+    
+    //Draw moon at position +450 on x-axis
+    posX = 450;
+    radius = 50;
+    rotatePlanet(radius,moon,posX,posY);
     // In double buffer mode the last
-    // two lines should alsways be
+    
+    // two lines should always be
     glFlush ();
     glutSwapBuffers (); // swap front and back buffer
 }
 
 // display callback function
+// use glMatrix();
 void display2 (void)
 {
     glClear (GL_COLOR_BUFFER_BIT);
-
-    ///////
     // display your data here ...
-    //
-
-    glBegin (GL_QUADS);
-        glColor3f (1,0,0);
-        glVertex2i (-g_vecPos(1), -g_vecPos(2));
-        glColor3f (0,1,0);
-        glVertex2i (g_vecPos(1), -g_vecPos(2));
-        glColor3f (0,0,1);
-        glVertex2i (g_vecPos(1), g_vecPos(2));
-        glColor3f (1,1,0);
-        glVertex2i (-g_vecPos(1), g_vecPos(2));
-    glEnd ();
-
-    //
-    ///////
-
+    
     // In double buffer mode the last
     // two lines should alsways be
     glFlush ();
@@ -114,10 +188,11 @@ int min (int a, int b) { return a>b? a: b; }
 // timer callback function
 void timer (int value)
 {
-    ///////
-    // update your variables here ...
-    //
-
+    //Rotate your objects here
+    //Angles for the planets
+    float earthAngle = 0;
+    float moonAngle = 0;
+    //rotatePlanet(earthAngle);
     int size2 = min (g_iWidth, g_iHeight) / 2;
 
     // variables for display1 ...
@@ -167,6 +242,7 @@ int main (int argc, char **argv){
     initGL ();    // init the GL (i.e. view settings, ...)
 
     // assign callbacks
+    //causes to refresh the timer()
     glutTimerFunc (10, timer, 0);
     glutKeyboardFunc (keyboard);
     glutDisplayFunc (display1);

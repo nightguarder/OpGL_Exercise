@@ -16,6 +16,7 @@
 		D53561DC2925000C008F4DEF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D502B989290EFEC500FF8463 /* OpenGL.framework */; };
 		D53561DD29250013008F4DEF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D502B987290EFEBF00FF8463 /* GLUT.framework */; };
 		D53561DE292500BB008F4DEF /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D53561CE2924FDB8008F4DEF /* vector.cpp */; };
+		D5CDF003292B94BA008EF2E7 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5CDF001292B94BA008EF2E7 /* color.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +53,8 @@
 		D53561CF2924FDB8008F4DEF /* vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector.hpp; sourceTree = "<group>"; };
 		D53561D52924FFAA008F4DEF /* Solar */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Solar; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53561D72924FFAA008F4DEF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D5CDF001292B94BA008EF2E7 /* color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = color.cpp; sourceTree = "<group>"; };
+		D5CDF002292B94BA008EF2E7 /* color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = color.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				D53561CE2924FDB8008F4DEF /* vector.cpp */,
 				D53561CF2924FDB8008F4DEF /* vector.hpp */,
 				D53561D72924FFAA008F4DEF /* main.cpp */,
+				D5CDF001292B94BA008EF2E7 /* color.cpp */,
+				D5CDF002292B94BA008EF2E7 /* color.hpp */,
 			);
 			path = Solar;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5CDF003292B94BA008EF2E7 /* color.cpp in Sources */,
 				D53561DE292500BB008F4DEF /* vector.cpp in Sources */,
 				D53561D82924FFAA008F4DEF /* main.cpp in Sources */,
 			);
