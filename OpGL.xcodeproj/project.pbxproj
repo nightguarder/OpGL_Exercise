@@ -12,6 +12,8 @@
 		D502B98A290EFEC500FF8463 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D502B989290EFEC500FF8463 /* OpenGL.framework */; };
 		D502B993290F20B700FF8463 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D502B991290F20B700FF8463 /* point.cpp */; };
 		D502B996290F220B00FF8463 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D502B994290F220B00FF8463 /* color.cpp */; };
+		D50512F9292D586A00074E1F /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D50512F7292D586A00074E1F /* point.cpp */; };
+		D50512FC292D58D500074E1F /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D50512FA292D58D500074E1F /* matrix.cpp */; };
 		D53561D82924FFAA008F4DEF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D53561D72924FFAA008F4DEF /* main.cpp */; };
 		D53561DC2925000C008F4DEF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D502B989290EFEC500FF8463 /* OpenGL.framework */; };
 		D53561DD29250013008F4DEF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D502B987290EFEBF00FF8463 /* GLUT.framework */; };
@@ -49,6 +51,10 @@
 		D502B992290F20B700FF8463 /* point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = point.hpp; sourceTree = "<group>"; };
 		D502B994290F220B00FF8463 /* color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = color.cpp; sourceTree = "<group>"; };
 		D502B995290F220B00FF8463 /* color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = color.hpp; sourceTree = "<group>"; };
+		D50512F7292D586A00074E1F /* point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
+		D50512F8292D586A00074E1F /* point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = point.hpp; sourceTree = "<group>"; };
+		D50512FA292D58D500074E1F /* matrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		D50512FB292D58D500074E1F /* matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
 		D53561CE2924FDB8008F4DEF /* vector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vector.cpp; sourceTree = "<group>"; };
 		D53561CF2924FDB8008F4DEF /* vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector.hpp; sourceTree = "<group>"; };
 		D53561D52924FFAA008F4DEF /* Solar */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Solar; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +133,10 @@
 				D53561D72924FFAA008F4DEF /* main.cpp */,
 				D5CDF001292B94BA008EF2E7 /* color.cpp */,
 				D5CDF002292B94BA008EF2E7 /* color.hpp */,
+				D50512F7292D586A00074E1F /* point.cpp */,
+				D50512F8292D586A00074E1F /* point.hpp */,
+				D50512FA292D58D500074E1F /* matrix.cpp */,
+				D50512FB292D58D500074E1F /* matrix.hpp */,
 			);
 			path = Solar;
 			sourceTree = "<group>";
@@ -219,6 +229,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50512FC292D58D500074E1F /* matrix.cpp in Sources */,
+				D50512F9292D586A00074E1F /* point.cpp in Sources */,
 				D5CDF003292B94BA008EF2E7 /* color.cpp in Sources */,
 				D53561DE292500BB008F4DEF /* vector.cpp in Sources */,
 				D53561D82924FFAA008F4DEF /* main.cpp in Sources */,
