@@ -28,3 +28,6 @@ https://youtu.be/g9AnCgpBWUk
 #### Exercise 3
 * Implement a visualization of an animated solar system. 
 * The result should rotate the planets around the sun.
+* Use Bresenham algorithm to draw Planets
+* Rotate Planet around arbitrary point
+![Exercise 3 image](result_planet1.png)
