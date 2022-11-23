@@ -5,6 +5,7 @@
 //Libraries
 #include <iostream>
 #include <math.h>
+#include <complex>
 using namespace std;
 #define GL_SILENCE_DEPRECATION //to silence these warings
 #include <GLUT/glut.h>
@@ -31,6 +32,7 @@ Color sunColor(1,1,0);
 Color earthColor(0,0,1);
 Color moonColor(0.5,0.5,0.5);
 
+
 CVec2i g_vecPos;        // same as above but in vector form ...
 CVec2i g_vecPosIncr;    // (used in display2)
 
@@ -51,12 +53,10 @@ void init ()
     //Draw moon at position +450 on x-axis
     Moon.x = 450;
     Moon.y = 0;
-    
-    // init variables for display2
-    int aiPos    [2] = {0, 0};
-    int aiPosIncr[2] = {2, 2};
-    g_vecPos.setData (aiPos);
-    g_vecPosIncr.setData (aiPosIncr);
+    glDrawBuffer (GL_BACK);
+
+    // tell which color to use to clear image
+    glClearColor (0,0,0,1);
 }
 // function to initialize the view to ortho-projection
 void initGL ()
@@ -71,10 +71,10 @@ void initGL ()
     //Draw moon at position +450 on x-axis
     Moon_2.x = 450;
     Moon_2.y = 0;
+    
     glMatrixMode (GL_PROJECTION);            // Start modifying the projection matrix.
     glLoadIdentity ();                        // Reset project matrix.
     glOrtho (-g_iWidth/2, g_iWidth/2, -g_iHeight/2, g_iHeight/2, 0, 1);    // Map abstract coords directly to window coords.
-
     // tell GL that we draw to the back buffer and
     // swap buffers when image is ready to avoid flickering
     glDrawBuffer (GL_BACK);
@@ -135,13 +135,17 @@ void drawPlanet(GLint radius,Color rgb,GLint cx,GLint cy){
         }
     
 }
-//Rotate Planet cx first around Planet px
-Point rotateAroundPlanet(Point cx, Point px, float angle)
+//Rotate Planet cx first around 2 Planet px
+//Rotate Planet 1(p1)Earth around planet Planet 2  (p2)Sun
+Point rotateAroundPlanet(Point p1, Point p2, float angle)
 {
-    Point newPos(
-              ((cx.x - px.x) * cos(angle)) - ((cx.y - px.y) * sin(angle)) + px.x,
-              ((cx.x - px.x) * sin(angle)) + ((cx.y - px.y) * cos(angle)) + px.y
-              );
+    //Formula is not right
+    Point newPos(newPos.x = ((p1.x - p2.x) * cos(angle)) - ((p2.y - p1.y) * sin(angle)),
+        newPos.y = p2.y - ((p2.y - p1.y) * cos(angle)) - ((p1.x - p2.x) * sin(angle)));
+    
+    cout<< newPos.x<<endl;
+    cout << newPos.y<<endl;
+    
     return newPos;
 }
 // Rotation around point, with Matrix coordinates
@@ -204,15 +208,18 @@ void timer (int value)
 {
     //Rotate your objects here
     //Angles for the planets
-    float earthAngle = -0.017; // Earth Rotation Speed factor
-    float moonAngle = -0.314;
+    float earthAngle = -0.0117; // Earth Rotation Speed factor
+    float moonAngle = -0.0314;
     
     int size2 = min (g_iWidth, g_iHeight) / 2;
     
     //display 1
     // rotation formula
     Earth = rotateAroundPlanet(Earth, Sun, earthAngle);
-    Moon  = rotateAroundPlanet(Moon, Earth, moonAngle);
+    //cout << Earth.x << endl;
+    //cout << Earth.y << endl;
+    
+    //Moon  = rotateAroundPlanet(Moon, Earth, moonAngle);
     
     //display 2
     //Earth_2 = rotateAroundPlanet2(Earth_2, Sun_2, earthAngle);
